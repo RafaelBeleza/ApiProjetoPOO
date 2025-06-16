@@ -32,7 +32,19 @@ fun main(args: Array<String>) {
         password = dbPassword
     )
 
-    io.ktor.server.netty.EngineMain.main(args)
+    println("--------------------")
+    println("1.App")
+    println("2.Create Tabels")
+    println("2.Drop Tabels")
+    val chooseRunMode:Int = readln().toIntOrNull() ?: 1
+    if(chooseRunMode == 1){
+        io.ktor.server.netty.EngineMain.main(args)
+    } else if(chooseRunMode == 2){
+        database.createTables()
+    } else if(chooseRunMode == 3){
+        database.dropTables()
+    }
+
 }
 
 fun Application.module() {
